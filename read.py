@@ -1,6 +1,9 @@
-import cv2
-import numpy as np
+#Make sure you have these libraries
+#pip install (pyserial,numpy,opencv-contrib-python)
+import cv2 #OpenCV
+import numpy as np #Math
 import sys
+import serial,time #Needed to communicate with Arduino
 
 cap = cv2.VideoCapture(0)
 
