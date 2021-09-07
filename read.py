@@ -5,8 +5,8 @@ import numpy as np #Math
 import sys
 import serial,time #Needed to communicate with Arduino
 
-cap = cv2.VideoCapture(0)
-ArduinoSerial =serial.Serial('com5',9600,timeout=0.1)
+cap = cv2.VideoCapture(0) #The number here is which camera you use, 0 is default webcam 
+#ArduinoSerial =serial.Serial('com5',9600,timeout=0.1)
 
 while(True):
     ret, frame = cap.read()
@@ -15,8 +15,8 @@ while(True):
     hsvFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
   
     #Define Upper and lower color limits, then define the mask
-    orange_lower = np.array([0, 50,50 ], np.uint8) #Note: I had to experiment to try and get the upper and lower limits of orange, I used https://pinetools.com/image-color-picker
-    orange_upper = np.array([255, 250, 250], np.uint8)
+    orange_lower = np.array([10, 15,15 ], np.uint8) #Note: I had to experiment to try and get the upper and lower limits of orange, I used https://pinetools.com/image-color-picker
+    orange_upper = np.array([60, 255, 255], np.uint8)
     orange_mask = cv2.inRange(hsvFrame, orange_lower, orange_upper)
 
     #I have no idea what this is for
@@ -39,7 +39,7 @@ while(True):
             center = (i[0], i[1])
             string = 'X{0:d}'.format(i[0])
             print(string)
-            ArduinoSerial.write(string.encode('utf-8'))
+            #ArduinoSerial.write(string.encode('utf-8'))
             # circle center
             cv2.circle(frame, center, 1, (0, 0, 255), 3)
             # circle outline
