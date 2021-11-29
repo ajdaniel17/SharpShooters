@@ -42,8 +42,8 @@ class VisionTrack(threading.Thread):
     cX = 0
     cY = 0
     found = 0
-    xtar = 309
-    ytar = 327
+    xtar = 304
+    ytar = 333
     readyy = 0
     cutoff = 250
     def __init__(self):

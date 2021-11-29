@@ -42,8 +42,10 @@ with ControllerResource(dead_zone=0.1, hot_zone = .001) as joystick:
 
         newX = math.cos(angle)
         newY = math.sin(angle)
-
-        print(newX)
+        if(joystick.r2):
+            print("yeah")
+        print(joystick.r2)
+       # print(newX)
         #if(lastLY != left_y):
             #print("Left Y: %.4f" % left_y)
 
